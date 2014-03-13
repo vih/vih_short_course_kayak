@@ -1,0 +1,162 @@
+<?php
+/**
+ * @file
+ * Code for the VIH Short Course Commerce feature.
+ */
+
+include_once('vih_short_course_kayak.features.inc');
+
+/**
+ * Implementation of hook_form_FORMID_alter().
+ */
+function vih_short_course_kayak_form_commerce_cart_add_to_cart_form_alter(&$form, &$form_state) {
+
+  // Make sure that one product display has been registered before starting on a registration for a new product display.
+  $entity = reset(entity_load($form_state['context']['entity_type'], array($form_state['context']['entity_id'])));
+
+  $course_is_expired = FALSE;
+
+  // Checking for expired course.
+  if (!empty($entity->field_course_time[LANGUAGE_NONE][0]['value2'])) {
+    $timezone = $entity->field_course_time[LANGUAGE_NONE][0]['timezone'];
+    $timezone_db = $entity->field_course_time[LANGUAGE_NONE][0]['timezone_db'];
+    $time = $entity->field_course_time[LANGUAGE_NONE][0]['value2'] . ' ' . $timezone_db;
+    $course_time = format_date(strtotime($time), 'custom', 'Y-m-d H:i:s', $timezone);
+  }
+  elseif (!empty($entity->field_date[LANGUAGE_NONE][0]['value2'])) {
+    $timezone = $entity->field_date[LANGUAGE_NONE][0]['timezone'];
+    $timezone_db = $entity->field_date[LANGUAGE_NONE][0]['timezone_db'];
+    $time = $entity->field_date[LANGUAGE_NONE][0]['value2'] . ' ' . $timezone_db;
+    $course_time = format_date(strtotime($time), 'custom', 'Y-m-d H:i:s', $timezone);
+  }
+  $course_is_expired = (strtotime($course_time) < time());
+
+  // Kayak courses - add possiblity to rent a kayak.
+  if (!$course_is_expired AND $entity->type == 'vih_short_course_kajak') {
+  
+    if (!empty($entity->field_rent_kayak)) {
+
+      $form['rent_kayak'] = array(
+        '#type' => 'fieldset',
+        '#title' => t('Additional products'),
+        '#weight' => 20,
+      );
+
+      // Only one possible kayak product due to limitations on the content type.
+      $kayak_product_id = $entity->field_rent_kayak[LANGUAGE_NONE][0]['product_id'];
+      $kayak_product = commerce_product_load($kayak_product_id);
+
+      $price = commerce_product_calculate_sell_price($kayak_product);
+      $price = ' (' . commerce_currency_format($price['amount'], $price['currency_code']) . ')';
+
+      $options = array(
+        'none' => t('No, thanks'),
+        $kayak_product->product_id => $kayak_product->title . ' <span class="kayak-price">'. $price . '</span>',        
+      );
+
+      $form['rent_kayak']['kayak'] = array(
+        '#type' => 'radios',
+        '#title' => t('Do you want to rent a kayak?'),
+        '#options' => $options,
+        '#default_value' => 'none',
+        '#weight' => 20,
+      );
+
+      $options = array(
+        'S' => t('Small'),
+        'M' => t('Medium'),
+        'L' => t('Large'),
+        'XL' => t('X-Large'),        
+      );
+      
+      $form['rent_kayak']['wetsuit_size'] = array(
+        '#type' => 'radios',
+        '#title' => t('Size for wetsuit'),
+        '#options' => $options,
+        '#default_value' => '',
+        '#weight' => 25,
+        '#states' => array(
+          'invisible' => array(
+            ':input[name="kayak"]' => array('value' => 'none'),
+          ),
+        ),
+      );
+      
+      array_unshift($form['#submit'], 'vih_short_course_commerce_add_to_cart_form_submit_before');
+      $form['#submit'][] = 'vih_short_course_commerce_add_to_cart_form_submit_after';
+    }
+  }
+}
+
+/**
+ * Submit handler: add the products and redirect to the checkout page.
+ */
+function vih_short_course_kayak_add_to_cart_form_submit_after($form, &$form_state) {
+  global $user;
+
+  // Add any selected training.
+  if (!empty($form_state['values']['kayak']) && is_numeric($form_state['values']['kayak']) && $form_state['values']['kayak'] != 'none') {
+    $line_item = NULL;
+    if ($product = commerce_product_load(check_plain($form_state['values']['kayak']))) {
+      $line_item = commerce_product_line_item_new($product, check_plain($form_state['values']['quantity']), check_plain($form_state['line_item']->order_id), array(), 'vih_kayak');
+
+      commerce_line_item_save($line_item);
+
+      $line_item->field_wetsuit_size[LANGUAGE_NONE][0]['value'] = check_plain($form_state['values']['wetsuit_size']);
+      
+      $line_item->field_registrant_name[LANGUAGE_NONE][0]['value'] = check_plain($form_state['values']['line_item_fields']['field_registrant_name'][LANGUAGE_NONE][0]['value']);
+      
+      $line_item = commerce_line_item_load($line_item->line_item_id);
+
+      $combine_products = FALSE;
+      $line_item = commerce_cart_product_add($user->uid, $line_item, $combine_products);
+    }
+  }
+}
+
+/**
+ * Get the list of options for the field_kayak_extra_choice field for a specific product.
+ */
+function vih_short_course_kayak_extra_choice_options_for_node($nid) {
+  // Use static cache for improved performance.
+  static $options = array();
+  if (isset($options[$nid])) {
+    return $options[$nid];
+  }
+
+  $options[$nid] = array();
+  $node_wrapper = entity_metadata_wrapper('node', $nid);
+  foreach ($node_wrapper->field_kayak_extra_choices->value() as $choice) {
+    list($key, $value) = explode('|', $choice);
+    // If we have a value we also have a key.
+    if (!empty($value)) {
+      $options[$nid][$key] = $value;
+    }
+  }
+
+  return $options[$nid];
+}
+
+/**
+ * Implements hook_form_alter().
+ */
+function vih_short_course_kayak_form_alter(&$form, &$form_state, $form_id) {
+  if (strpos($form_id, 'commerce_cart_add_to_cart_form') !== FALSE) {
+    // Handle single product values.
+    $context = $form_state['context'];
+    if (empty($context['display']['settings']) || empty($context['display']['settings']['line_item_type'])) {
+      return;
+    }
+    if ($context['display']['settings']['line_item_type'] == 'vih_short_course_kayak') {
+      if (!empty($context['entity_id']) && !empty($context['entity_type']) && $context['entity_type'] == 'node') {
+        $options = vih_short_course_kayak_extra_choice_options_for_node($context['entity_id']);
+        if (!empty($options)) {
+          $form['line_item_fields']['field_kayak_extra_choice'][LANGUAGE_NONE]['#options'] = $options;
+        }
+        else {
+          $form['line_item_fields']['field_kayak_extra_choice']['#access'] = FALSE;
+        }
+      }
+    }
+  }
+}
