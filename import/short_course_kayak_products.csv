@@ -1,0 +1,4 @@
+Title,SKU,Price,Stock status,Stock quantity,Room
+Kayak course,KAYAK-COURSE,4000.00,1,50,single
+Kayak course sold out,KAYAK-COURSE-SOLDOUT,4000.00,1,0,single
+Kayak course expired,KAYAK-COURSE-EXPIRED,4000.00,1,50,single

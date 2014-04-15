@@ -23,6 +23,7 @@ dependencies[] = text
 dependencies[] = vih_core
 dependencies[] = vih_short_course
 dependencies[] = vih_short_course_commerce
+dependencies[] = vih_commerce
 datestamp = 1346221374
 features[commerce_line_item_type][] = vih_kayak
 features[commerce_line_item_type][] = vih_short_course_kayak
@@ -107,3 +108,5 @@ features_exclude[dependencies][defaultconfig] = defaultconfig
 features_exclude[dependencies][commerce_price] = commerce_price
 features_exclude[dependencies][list] = list
 features_exclude[dependencies][number] = number
+
+files[] = vih_short_course_kayak.migrate.inc

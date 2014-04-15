@@ -7,6 +7,22 @@
 include_once('vih_short_course_kayak.features.inc');
 
 /**
+ * Implements hook_migrate_api().
+ */
+function vih_short_course_kayak_migrate_api() {
+  $api = array(
+    'api' => 2,
+    'migrations' => array(
+      'VIHShortCourseKayakProduct' => array('class_name' => 'VIHShortCourseKayakProduct'),
+      'VIHShortCourseKayakExtraProduct' => array('class_name' => 'VIHShortCourseKayakExtraProduct'),
+      'VIHShortCourseKayakNode' => array('class_name' => 'VIHShortCourseKayakNode'),
+    ),
+  );
+
+  return $api;
+}
+
+/**
  * Implementation of hook_form_FORMID_alter().
  */
 function vih_short_course_kayak_form_commerce_cart_add_to_cart_form_alter(&$form, &$form_state) {
