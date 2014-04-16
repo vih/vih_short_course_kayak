@@ -30,6 +30,20 @@ function vih_short_course_kayak_form_commerce_cart_add_to_cart_form_alter(&$form
   // Make sure that one product display has been registered before starting on a registration for a new product display.
   $entity = reset(entity_load($form_state['context']['entity_type'], array($form_state['context']['entity_id'])));
 
+  // Add extra choices.
+  $context = $form_state['context'];
+  if (!empty($form['line_item_fields']['field_kayak_extra_choice']) AND $form['line_item_fields']['field_kayak_extra_choice'][LANGUAGE_NONE]['#entity']->type == 'vih_short_course_kayak') {
+    if (!empty($context['entity_id']) && !empty($context['entity_type']) && $context['entity_type'] == 'node') {
+      $options = vih_short_course_kayak_extra_choice_options_for_node($context['entity_id']);
+      if (!empty($options)) {
+        $form['line_item_fields']['field_kayak_extra_choice'][LANGUAGE_NONE]['#options'] = $options;
+      }
+      else {
+        $form['line_item_fields']['field_kayak_extra_choice']['#access'] = FALSE;
+      }
+    }
+  }
+
   // Kayak courses - add possiblity to rent a kayak.
   if (!_vih_commerce_is_expired($entity) AND !_vih_commerce_is_out_of_stock($form['product_id']['#value']) AND $entity->type == 'vih_short_course_kajak') {
   
@@ -80,9 +94,8 @@ function vih_short_course_kayak_form_commerce_cart_add_to_cart_form_alter(&$form
           ),
         ),
       );
-      
-      array_unshift($form['#submit'], 'vih_short_course_commerce_add_to_cart_form_submit_before');
-      $form['#submit'][] = 'vih_short_course_commerce_add_to_cart_form_submit_after';
+
+      $form['#submit'][] = 'vih_short_course_kayak_add_to_cart_form_submit_after';
     }
   }
 }
@@ -139,23 +152,3 @@ function vih_short_course_kayak_extra_choice_options_for_node($nid) {
   return $options[$nid];
 }
 
-/**
- * Implements hook_form_alter().
- */
-function vih_short_course_kayak_form_alter(&$form, &$form_state, $form_id) {
-  if (strpos($form_id, 'commerce_cart_add_to_cart_form') !== FALSE) {
-
-    $context = $form_state['context'];
-    if (!empty($form['line_item_fields']['field_kayak_extra_choice']) AND $form['line_item_fields']['field_kayak_extra_choice'][LANGUAGE_NONE]['#entity']->type == 'vih_short_course_kayak') {
-      if (!empty($context['entity_id']) && !empty($context['entity_type']) && $context['entity_type'] == 'node') {
-        $options = vih_short_course_kayak_extra_choice_options_for_node($context['entity_id']);
-        if (!empty($options)) {
-          $form['line_item_fields']['field_kayak_extra_choice'][LANGUAGE_NONE]['#options'] = $options;
-        }
-        else {
-          $form['line_item_fields']['field_kayak_extra_choice']['#access'] = FALSE;
-        }
-      }
-    }
-  }
-}
