@@ -340,7 +340,6 @@ function vih_short_course_kayak_defaultconfig_user_default_permissions() {
     'name' => 'create commerce_product entities of bundle vih_kayak',
     'roles' => array(
       'administrator' => 'administrator',
-      'kontor' => 'kontor',
     ),
     'module' => 'commerce_product',
   );
@@ -350,7 +349,6 @@ function vih_short_course_kayak_defaultconfig_user_default_permissions() {
     'name' => 'create commerce_product entities of bundle vih_short_course_kayak',
     'roles' => array(
       'administrator' => 'administrator',
-      'kontor' => 'kontor',
     ),
     'module' => 'commerce_product',
   );
@@ -392,7 +390,6 @@ function vih_short_course_kayak_defaultconfig_user_default_permissions() {
     'name' => 'edit any commerce_product entity of bundle vih_kayak',
     'roles' => array(
       'administrator' => 'administrator',
-      'kontor' => 'kontor',
     ),
     'module' => 'commerce_product',
   );
@@ -402,7 +399,6 @@ function vih_short_course_kayak_defaultconfig_user_default_permissions() {
     'name' => 'edit any commerce_product entity of bundle vih_short_course_kayak',
     'roles' => array(
       'administrator' => 'administrator',
-      'kontor' => 'kontor',
     ),
     'module' => 'commerce_product',
   );
@@ -423,7 +419,6 @@ function vih_short_course_kayak_defaultconfig_user_default_permissions() {
     'name' => 'edit own commerce_product entities of bundle vih_kayak',
     'roles' => array(
       'administrator' => 'administrator',
-      'kontor' => 'kontor',
     ),
     'module' => 'commerce_product',
   );
@@ -433,7 +428,6 @@ function vih_short_course_kayak_defaultconfig_user_default_permissions() {
     'name' => 'edit own commerce_product entities of bundle vih_short_course_kayak',
     'roles' => array(
       'administrator' => 'administrator',
-      'kontor' => 'kontor',
     ),
     'module' => 'commerce_product',
   );
@@ -454,7 +448,6 @@ function vih_short_course_kayak_defaultconfig_user_default_permissions() {
     'name' => 'view any commerce_product entity of bundle vih_kayak',
     'roles' => array(
       'administrator' => 'administrator',
-      'kontor' => 'kontor',
     ),
     'module' => 'commerce_product',
   );
@@ -464,7 +457,6 @@ function vih_short_course_kayak_defaultconfig_user_default_permissions() {
     'name' => 'view any commerce_product entity of bundle vih_short_course_kayak',
     'roles' => array(
       'administrator' => 'administrator',
-      'kontor' => 'kontor',
     ),
     'module' => 'commerce_product',
   );
@@ -474,7 +466,6 @@ function vih_short_course_kayak_defaultconfig_user_default_permissions() {
     'name' => 'view own commerce_product entities of bundle vih_kayak',
     'roles' => array(
       'administrator' => 'administrator',
-      'kontor' => 'kontor',
     ),
     'module' => 'commerce_product',
   );
@@ -484,7 +475,6 @@ function vih_short_course_kayak_defaultconfig_user_default_permissions() {
     'name' => 'view own commerce_product entities of bundle vih_short_course_kayak',
     'roles' => array(
       'administrator' => 'administrator',
-      'kontor' => 'kontor',
     ),
     'module' => 'commerce_product',
   );

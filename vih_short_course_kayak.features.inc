@@ -13,14 +13,14 @@ function vih_short_course_kayak_commerce_line_item_default_types() {
       'name' => 'VIH Kayak',
       'description' => 'A customizable product line item type.',
       'product' => TRUE,
-      'add_form_submit_value' => 'Tilføj vare',
+      'add_form_submit_value' => 'Add product',
       'base' => 'commerce_product_line_item',
     ),
     'vih_short_course_kayak' => array(
       'name' => 'VIH Short Course Kayak',
       'description' => 'A customizable product line item type.',
       'product' => TRUE,
-      'add_form_submit_value' => 'Tilføj vare',
+      'add_form_submit_value' => 'Add product',
       'base' => 'commerce_product_line_item',
     ),
   );

@@ -43,6 +43,9 @@ function vih_short_course_kayak_strongarm() {
       'diff_standard' => array(
         'custom_settings' => FALSE,
       ),
+      'featured' => array(
+        'custom_settings' => TRUE,
+      ),
     ),
     'extra_fields' => array(
       'form' => array(
@@ -62,20 +65,32 @@ function vih_short_course_kayak_strongarm() {
       'display' => array(
         'product:sku' => array(
           'default' => array(
-            'weight' => '12',
+            'weight' => '14',
+            'visible' => FALSE,
+          ),
+          'teaser' => array(
+            'weight' => '4',
             'visible' => FALSE,
           ),
         ),
         'product:title' => array(
           'default' => array(
-            'weight' => '13',
+            'weight' => '15',
+            'visible' => FALSE,
+          ),
+          'teaser' => array(
+            'weight' => '5',
             'visible' => FALSE,
           ),
         ),
         'product:commerce_price' => array(
           'default' => array(
-            'weight' => '9',
+            'weight' => '11',
             'visible' => FALSE,
+          ),
+          'teaser' => array(
+            'weight' => '1',
+            'visible' => TRUE,
           ),
         ),
         'product:field_entity_registration' => array(
@@ -86,8 +101,12 @@ function vih_short_course_kayak_strongarm() {
         ),
         'product:field_room' => array(
           'default' => array(
-            'weight' => '11',
+            'weight' => '13',
             'visible' => FALSE,
+          ),
+          'teaser' => array(
+            'weight' => '2',
+            'visible' => TRUE,
           ),
         ),
         'product:field_agegroup' => array(
@@ -98,7 +117,11 @@ function vih_short_course_kayak_strongarm() {
         ),
         'product:status' => array(
           'default' => array(
-            'weight' => '8',
+            'weight' => '10',
+            'visible' => FALSE,
+          ),
+          'teaser' => array(
+            'weight' => '15',
             'visible' => FALSE,
           ),
         ),
@@ -116,7 +139,11 @@ function vih_short_course_kayak_strongarm() {
         ),
         'product:commerce_stock' => array(
           'default' => array(
-            'weight' => '6',
+            'weight' => '8',
+            'visible' => FALSE,
+          ),
+          'teaser' => array(
+            'weight' => '3',
             'visible' => FALSE,
           ),
         ),
@@ -131,44 +158,6 @@ function vih_short_course_kayak_strongarm() {
   $strongarm->name = 'language_content_type_vih_short_course_kajak';
   $strongarm->value = '0';
   $export['language_content_type_vih_short_course_kajak'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'menu_options_vih_short_course_kajak';
-  $strongarm->value = array();
-  $export['menu_options_vih_short_course_kajak'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'menu_parent_vih_short_course_kajak';
-  $strongarm->value = 'main-menu:0';
-  $export['menu_parent_vih_short_course_kajak'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'node_options_vih_short_course_kajak';
-  $strongarm->value = array(
-    0 => 'status',
-    1 => 'promote',
-  );
-  $export['node_options_vih_short_course_kajak'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'node_preview_vih_short_course_kajak';
-  $strongarm->value = '0';
-  $export['node_preview_vih_short_course_kajak'] = $strongarm;
-
-  $strongarm = new stdClass();
-  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
-  $strongarm->api_version = 1;
-  $strongarm->name = 'node_submitted_vih_short_course_kajak';
-  $strongarm->value = 0;
-  $export['node_submitted_vih_short_course_kajak'] = $strongarm;
 
   return $export;
 }
