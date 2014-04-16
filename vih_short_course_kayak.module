@@ -30,25 +30,8 @@ function vih_short_course_kayak_form_commerce_cart_add_to_cart_form_alter(&$form
   // Make sure that one product display has been registered before starting on a registration for a new product display.
   $entity = reset(entity_load($form_state['context']['entity_type'], array($form_state['context']['entity_id'])));
 
-  $course_is_expired = FALSE;
-
-  // Checking for expired course.
-  if (!empty($entity->field_course_time[LANGUAGE_NONE][0]['value2'])) {
-    $timezone = $entity->field_course_time[LANGUAGE_NONE][0]['timezone'];
-    $timezone_db = $entity->field_course_time[LANGUAGE_NONE][0]['timezone_db'];
-    $time = $entity->field_course_time[LANGUAGE_NONE][0]['value2'] . ' ' . $timezone_db;
-    $course_time = format_date(strtotime($time), 'custom', 'Y-m-d H:i:s', $timezone);
-  }
-  elseif (!empty($entity->field_date[LANGUAGE_NONE][0]['value2'])) {
-    $timezone = $entity->field_date[LANGUAGE_NONE][0]['timezone'];
-    $timezone_db = $entity->field_date[LANGUAGE_NONE][0]['timezone_db'];
-    $time = $entity->field_date[LANGUAGE_NONE][0]['value2'] . ' ' . $timezone_db;
-    $course_time = format_date(strtotime($time), 'custom', 'Y-m-d H:i:s', $timezone);
-  }
-  $course_is_expired = (strtotime($course_time) < time());
-
   // Kayak courses - add possiblity to rent a kayak.
-  if (!$course_is_expired AND $entity->type == 'vih_short_course_kajak') {
+  if (!_vih_commerce_is_expired($entity) AND !_vih_commerce_is_out_of_stock($form['product_id']['#value']) AND $entity->type == 'vih_short_course_kajak') {
   
     if (!empty($entity->field_rent_kayak)) {
 
@@ -143,6 +126,9 @@ function vih_short_course_kayak_extra_choice_options_for_node($nid) {
   $options[$nid] = array();
   $node_wrapper = entity_metadata_wrapper('node', $nid);
   foreach ($node_wrapper->field_kayak_extra_choices->value() as $choice) {
+    if (empty($choice)) {
+      continue;
+    }
     list($key, $value) = explode('|', $choice);
     // If we have a value we also have a key.
     if (!empty($value)) {
@@ -158,12 +144,9 @@ function vih_short_course_kayak_extra_choice_options_for_node($nid) {
  */
 function vih_short_course_kayak_form_alter(&$form, &$form_state, $form_id) {
   if (strpos($form_id, 'commerce_cart_add_to_cart_form') !== FALSE) {
-    // Handle single product values.
+
     $context = $form_state['context'];
-    if (empty($context['display']['settings']) || empty($context['display']['settings']['line_item_type'])) {
-      return;
-    }
-    if ($context['display']['settings']['line_item_type'] == 'vih_short_course_kayak') {
+    if (!empty($form['line_item_fields']['field_kayak_extra_choice']) AND $form['line_item_fields']['field_kayak_extra_choice'][LANGUAGE_NONE]['#entity']->type == 'vih_short_course_kayak') {
       if (!empty($context['entity_id']) && !empty($context['entity_type']) && $context['entity_type'] == 'node') {
         $options = vih_short_course_kayak_extra_choice_options_for_node($context['entity_id']);
         if (!empty($options)) {

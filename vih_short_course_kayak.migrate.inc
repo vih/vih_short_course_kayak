@@ -186,6 +186,8 @@ class VIHShortCourseKayakNode extends VIHMigration {
     $this->addFieldMapping('field_golf_product', 'skus');
 
     $this->addFieldMapping('field_rent_kayak', 'extra_product');
+
+    $this->addFieldMapping('field_kayak_extra_choices', 'options');
   }
 
   function fields() {
@@ -208,6 +210,7 @@ class VIHShortCourseKayakNode extends VIHMigration {
       $products[] = $product->product_id;
     }
     $row->extra_product = $products;
+    $row->options = explode(',', $row->options);
   }
 
   function csvcolumns() {
