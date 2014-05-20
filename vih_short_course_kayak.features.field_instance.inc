@@ -1588,8 +1588,8 @@ function vih_short_course_kayak_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-vih_short_course_kajak-field_picture'
-  $field_instances['node-vih_short_course_kajak-field_picture'] = array(
+  // Exported field_instance: 'node-vih_short_course_kajak-field_featured_image'
+  $field_instances['node-vih_short_course_kajak-field_featured_image'] = array(
     'bundle' => 'vih_short_course_kajak',
     'default_value' => NULL,
     'deleted' => 0,
@@ -1625,7 +1625,7 @@ function vih_short_course_kayak_field_default_field_instances() {
       ),
     ),
     'entity_type' => 'node',
-    'field_name' => 'field_picture',
+    'field_name' => 'field_featured_image',
     'label' => 'Billede',
     'required' => FALSE,
     'settings' => array(
