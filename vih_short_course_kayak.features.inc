@@ -54,10 +54,10 @@ function vih_short_course_kayak_commerce_product_default_types() {
  * Implements hook_ctools_plugin_api().
  */
 function vih_short_course_kayak_ctools_plugin_api($module = NULL, $api = NULL) {
-  if ($module == "strongarm" && $api == "strongarm") {
+  if ($module == "page_manager" && $api == "pages_default") {
     return array("version" => "1");
   }
-  if ($module == "page_manager" && $api == "pages_default") {
+  if ($module == "strongarm" && $api == "strongarm") {
     return array("version" => "1");
   }
 }
@@ -76,5 +76,6 @@ function vih_short_course_kayak_node_info() {
       'help' => '',
     ),
   );
+  drupal_alter('node_info', $items);
   return $items;
 }
