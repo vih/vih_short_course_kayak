@@ -159,5 +159,43 @@ function vih_short_course_kayak_strongarm() {
   $strongarm->value = '0';
   $export['language_content_type_vih_short_course_kajak'] = $strongarm;
 
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'menu_options_vih_short_course_kajak';
+  $strongarm->value = array();
+  $export['menu_options_vih_short_course_kajak'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'menu_parent_vih_short_course_kajak';
+  $strongarm->value = 'main-menu:0';
+  $export['menu_parent_vih_short_course_kajak'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'node_options_vih_short_course_kajak';
+  $strongarm->value = array(
+    0 => 'status',
+    1 => 'promote',
+  );
+  $export['node_options_vih_short_course_kajak'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'node_preview_vih_short_course_kajak';
+  $strongarm->value = '0';
+  $export['node_preview_vih_short_course_kajak'] = $strongarm;
+
+  $strongarm = new stdClass();
+  $strongarm->disabled = FALSE; /* Edit this to true to make a default strongarm disabled initially */
+  $strongarm->api_version = 1;
+  $strongarm->name = 'node_submitted_vih_short_course_kajak';
+  $strongarm->value = 0;
+  $export['node_submitted_vih_short_course_kajak'] = $strongarm;
+
   return $export;
 }
