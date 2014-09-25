@@ -963,11 +963,17 @@ function vih_short_course_kayak_field_default_field_instances() {
       ),
       'default' => array(
         'label' => 'above',
-        'module' => 'commerce_price',
+        'module' => 'commerce_price_savings_formatter',
         'settings' => array(
           'calculation' => 'calculated_sell_price',
+          'prices' => array(
+            0 => 'list',
+            1 => 'price',
+          ),
+          'savings' => 'percentage',
+          'show_labels' => FALSE,
         ),
-        'type' => 'commerce_price_formatted_amount',
+        'type' => 'commerce_price_savings_formatter_inline',
         'weight' => 2,
       ),
       'full' => array(
