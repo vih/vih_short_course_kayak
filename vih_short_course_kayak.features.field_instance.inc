@@ -1822,6 +1822,7 @@ function vih_short_course_kayak_field_default_field_instances() {
     'label' => 'Kajakleje',
     'required' => 0,
     'settings' => array(
+      'additional_products_provider' => 0,
       'field_injection' => 1,
       'referenceable_types' => array(
         'product' => 0,
@@ -1830,7 +1831,6 @@ function vih_short_course_kayak_field_default_field_instances() {
         'vih_short_course_basic' => 0,
         'vih_short_course_family' => 0,
         'vih_short_course_kayak' => 0,
-        'vih_short_course_sommercamp' => 0,
         'vih_short_course_sportcamp' => 0,
         'vih_shourt_course_golf' => 0,
       ),
@@ -1843,10 +1843,12 @@ function vih_short_course_kayak_field_default_field_instances() {
         'fields' => array(),
         'type_settings' => array(
           'allow_existing' => 0,
-          'autogenerate_title' => 1,
+          'autogenerate_title' => 0,
           'delete_references' => 0,
+          'label_plural' => 'products',
+          'label_singular' => 'product',
           'match_operator' => 'CONTAINS',
-          'use_variation_language' => 0,
+          'override_labels' => 0,
         ),
       ),
       'type' => 'inline_entity_form',

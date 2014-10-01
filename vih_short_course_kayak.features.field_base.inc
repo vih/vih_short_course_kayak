@@ -85,7 +85,7 @@ function vih_short_course_kayak_field_default_field_bases() {
     'locked' => 0,
     'module' => 'commerce_product_reference',
     'settings' => array(
-      'options_list_limit' => NULL,
+      'options_list_limit' => '',
     ),
     'translatable' => 0,
     'type' => 'commerce_product_reference',
