@@ -90,7 +90,7 @@ function vih_short_course_kayak_strongarm() {
           ),
           'teaser' => array(
             'weight' => '1',
-            'visible' => TRUE,
+            'visible' => FALSE,
           ),
         ),
         'product:field_entity_registration' => array(
@@ -106,7 +106,7 @@ function vih_short_course_kayak_strongarm() {
           ),
           'teaser' => array(
             'weight' => '2',
-            'visible' => TRUE,
+            'visible' => FALSE,
           ),
         ),
         'product:field_agegroup' => array(
