@@ -35,6 +35,7 @@ function vih_short_course_kayak_form_commerce_cart_add_to_cart_form_alter(&$form
     if (!empty($context['entity_id']) && !empty($context['entity_type']) && $context['entity_type'] == 'node') {
       $options = vih_short_course_kayak_extra_choice_options_for_node($context['entity_id']);
       if (!empty($options)) {
+        $form['line_item_fields']['#type'] = 'fieldset';
         $form['line_item_fields']['field_kayak_extra_choice'][LANGUAGE_NONE]['#options'] = $options;
       }
       else {
