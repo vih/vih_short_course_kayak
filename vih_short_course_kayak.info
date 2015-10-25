@@ -1,5 +1,5 @@
 name = VIH Short Course Kayak
-description = Adds functionality for short kayak courses
+description = Handles functionality for short kayak courses where kayak rental and wet suit size is needed
 core = 7.x
 package = VIH
 version = 7.x-0.1
