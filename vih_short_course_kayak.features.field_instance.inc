@@ -10,7 +10,8 @@
 function vih_short_course_kayak_field_default_field_instances() {
   $field_instances = array();
 
-  // Exported field_instance: 'commerce_line_item-vih_kayak-commerce_display_path'
+  // Exported field_instance:
+  // 'commerce_line_item-vih_kayak-commerce_display_path'
   $field_instances['commerce_line_item-vih_kayak-commerce_display_path'] = array(
     'bundle' => 'vih_kayak',
     'default_value' => NULL,
@@ -245,7 +246,8 @@ function vih_short_course_kayak_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'commerce_line_item-vih_kayak-field_registrant_name'
+  // Exported field_instance:
+  // 'commerce_line_item-vih_kayak-field_registrant_name'
   $field_instances['commerce_line_item-vih_kayak-field_registrant_name'] = array(
     'bundle' => 'vih_kayak',
     'commerce_cart_settings' => array(
@@ -338,7 +340,8 @@ function vih_short_course_kayak_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'commerce_line_item-vih_short_course_kayak-commerce_display_path'
+  // Exported field_instance:
+  // 'commerce_line_item-vih_short_course_kayak-commerce_display_path'
   $field_instances['commerce_line_item-vih_short_course_kayak-commerce_display_path'] = array(
     'bundle' => 'vih_short_course_kayak',
     'default_value' => NULL,
@@ -384,7 +387,8 @@ function vih_short_course_kayak_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'commerce_line_item-vih_short_course_kayak-commerce_product'
+  // Exported field_instance:
+  // 'commerce_line_item-vih_short_course_kayak-commerce_product'
   $field_instances['commerce_line_item-vih_short_course_kayak-commerce_product'] = array(
     'bundle' => 'vih_short_course_kayak',
     'default_value' => NULL,
@@ -445,7 +449,8 @@ function vih_short_course_kayak_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'commerce_line_item-vih_short_course_kayak-commerce_total'
+  // Exported field_instance:
+  // 'commerce_line_item-vih_short_course_kayak-commerce_total'
   $field_instances['commerce_line_item-vih_short_course_kayak-commerce_total'] = array(
     'bundle' => 'vih_short_course_kayak',
     'default_value' => NULL,
@@ -515,7 +520,8 @@ function vih_short_course_kayak_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'commerce_line_item-vih_short_course_kayak-commerce_unit_price'
+  // Exported field_instance:
+  // 'commerce_line_item-vih_short_course_kayak-commerce_unit_price'
   $field_instances['commerce_line_item-vih_short_course_kayak-commerce_unit_price'] = array(
     'bundle' => 'vih_short_course_kayak',
     'default_value' => NULL,
@@ -585,7 +591,8 @@ function vih_short_course_kayak_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'commerce_line_item-vih_short_course_kayak-field_cpr_nummer'
+  // Exported field_instance:
+  // 'commerce_line_item-vih_short_course_kayak-field_cpr_nummer'
   $field_instances['commerce_line_item-vih_short_course_kayak-field_cpr_nummer'] = array(
     'bundle' => 'vih_short_course_kayak',
     'commerce_cart_settings' => array(
@@ -670,7 +677,8 @@ function vih_short_course_kayak_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'commerce_line_item-vih_short_course_kayak-field_kayak_extra_choice'
+  // Exported field_instance:
+  // 'commerce_line_item-vih_short_course_kayak-field_kayak_extra_choice'
   $field_instances['commerce_line_item-vih_short_course_kayak-field_kayak_extra_choice'] = array(
     'bundle' => 'vih_short_course_kayak',
     'commerce_cart_settings' => array(
@@ -704,7 +712,8 @@ function vih_short_course_kayak_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'commerce_line_item-vih_short_course_kayak-field_registrant_name'
+  // Exported field_instance:
+  // 'commerce_line_item-vih_short_course_kayak-field_registrant_name'
   $field_instances['commerce_line_item-vih_short_course_kayak-field_registrant_name'] = array(
     'bundle' => 'vih_short_course_kayak',
     'commerce_cart_settings' => array(
@@ -769,7 +778,8 @@ function vih_short_course_kayak_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'commerce_line_item-vih_short_course_kayak-field_roommate'
+  // Exported field_instance:
+  // 'commerce_line_item-vih_short_course_kayak-field_roommate'
   $field_instances['commerce_line_item-vih_short_course_kayak-field_roommate'] = array(
     'bundle' => 'vih_short_course_kayak',
     'commerce_cart_settings' => array(
@@ -939,7 +949,8 @@ function vih_short_course_kayak_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'commerce_product-vih_short_course_kayak-commerce_price'
+  // Exported field_instance:
+  // 'commerce_product-vih_short_course_kayak-commerce_price'
   $field_instances['commerce_product-vih_short_course_kayak-commerce_price'] = array(
     'bundle' => 'vih_short_course_kayak',
     'default_value' => NULL,
@@ -1075,7 +1086,8 @@ function vih_short_course_kayak_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'commerce_product-vih_short_course_kayak-commerce_stock'
+  // Exported field_instance:
+  // 'commerce_product-vih_short_course_kayak-commerce_stock'
   $field_instances['commerce_product-vih_short_course_kayak-commerce_stock'] = array(
     'bundle' => 'vih_short_course_kayak',
     'default_value' => array(
@@ -1142,7 +1154,8 @@ function vih_short_course_kayak_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'commerce_product-vih_short_course_kayak-field_room'
+  // Exported field_instance:
+  // 'commerce_product-vih_short_course_kayak-field_room'
   $field_instances['commerce_product-vih_short_course_kayak-field_room'] = array(
     'bundle' => 'vih_short_course_kayak',
     'commerce_cart_settings' => array(
@@ -1332,6 +1345,7 @@ function vih_short_course_kayak_field_default_field_instances() {
           'multiple_from' => '',
           'multiple_number' => '',
           'multiple_to' => '',
+          'show_remaining_days' => FALSE,
         ),
         'type' => 'date_default',
         'weight' => 2,
@@ -1357,6 +1371,7 @@ function vih_short_course_kayak_field_default_field_instances() {
           'multiple_from' => '',
           'multiple_number' => '',
           'multiple_to' => '',
+          'show_remaining_days' => FALSE,
         ),
         'type' => 'date_default',
         'weight' => 2,
@@ -1608,7 +1623,8 @@ function vih_short_course_kayak_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-vih_short_course_kajak-field_kayak_extra_choices'
+  // Exported field_instance:
+  // 'node-vih_short_course_kajak-field_kayak_extra_choices'
   $field_instances['node-vih_short_course_kajak-field_kayak_extra_choices'] = array(
     'bundle' => 'vih_short_course_kajak',
     'default_value' => NULL,
@@ -1867,7 +1883,8 @@ function vih_short_course_kayak_field_default_field_instances() {
     ),
   );
 
-  // Exported field_instance: 'node-vih_short_course_kajak-field_short_course_lecture'
+  // Exported field_instance:
+  // 'node-vih_short_course_kajak-field_short_course_lecture'
   $field_instances['node-vih_short_course_kajak-field_short_course_lecture'] = array(
     'bundle' => 'vih_short_course_kajak',
     'default_value' => NULL,
